@@ -1,8 +1,16 @@
+from dataclasses import dataclass
+from datetime import datetime
+
 from flask import Flask, request
 
 from flask_orjson import ORJSON
 
 orjson = ORJSON()
+
+
+@dataclass
+class NewDataClass:
+    hello: str = "world"
 
 
 def create_app():
@@ -25,6 +33,8 @@ def create_app():
             "key": "value",
             "another_key": 123,
             "and_another": ["a", "b"],
+            "today": datetime.now(),
+            "dataclass": NewDataClass()
         }
 
     @app.post("/post")
