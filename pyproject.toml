@@ -1,0 +1,20 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "flask-orjson"
+authors = [{ name = "David Carmichael", email = "david@uilix.com" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+dynamic = ["version", "description"]
+dependencies = [
+    "orjson >= 5.8.0",
+    "flask >= 3.0.0",
+]
+[project.urls]
+Home = "https://github.com/CheeseCake87/flask-orjson"
+
+[tool.flit.sdist]
+exclude = ["app/", ".gitignore", "requirements_build.txt"]
