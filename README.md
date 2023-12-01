@@ -19,7 +19,7 @@ orjson = ORJSON()
 
 def create_app():
     app = Flask(__name__)
-    orjson.init_app(app)
+    orjson.init_app(app)  # Sets ORJSON as the default JSON encoder
 
     @app.route("/")
     def index():
