@@ -56,15 +56,15 @@ class ORJSONProvider(JSONProvider):
         if self.sort_keys:
             if "compact" in kwargs:
                 return orjson.dumps(
-                    obj, option=orjson.OPT_SORT_KEYS | orjson.OPT_INDENT_2, **kwargs
+                    obj, option=orjson.OPT_SORT_KEYS, default=self.default
                 ).decode("utf-8")
 
-            return orjson.dumps(obj, option=orjson.OPT_SORT_KEYS, **kwargs).decode(
+            return orjson.dumps(obj, option=orjson.OPT_SORT_KEYS | orjson.OPT_INDENT_2, default=self.default).decode(
                 "utf-8"
             )
 
         if "compact" in kwargs:
-            return orjson.dumps(obj, option=orjson.OPT_INDENT_2, **kwargs).decode(
+            return orjson.dumps(obj, option=orjson.OPT_INDENT_2, default=self.default).decode(
                 "utf-8"
             )
 
