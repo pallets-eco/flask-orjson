@@ -12,7 +12,7 @@ from flask.json.provider import JSONProvider
 from flask.wrappers import Response
 from werkzeug.http import http_date
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 
 def _default(o: t.Any) -> t.Any:
@@ -59,14 +59,14 @@ class ORJSONProvider(JSONProvider):
                     obj, option=orjson.OPT_SORT_KEYS, default=self.default
                 ).decode("utf-8")
 
-            return orjson.dumps(obj, option=orjson.OPT_SORT_KEYS | orjson.OPT_INDENT_2, default=self.default).decode(
-                "utf-8"
-            )
+            return orjson.dumps(
+                obj,
+                option=orjson.OPT_SORT_KEYS | orjson.OPT_INDENT_2,
+                default=self.default,
+            ).decode("utf-8")
 
         if "compact" in kwargs:
-            return orjson.dumps(obj, option=orjson.OPT_INDENT_2, default=self.default).decode(
-                "utf-8"
-            )
+            return orjson.dumps(obj, default=self.default).decode("utf-8")
 
         return orjson.dumps(obj, **kwargs).decode("utf-8")
 
