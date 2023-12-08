@@ -10,7 +10,7 @@ license = { file = "LICENSE" }
 requires-python = ">=3.8"
 dynamic = ["version", "description"]
 dependencies = [
-    "orjson >= 5.8.0",
+    "orjson >= 3.9.0",
     "flask >= 3.0.0",
 ]
 [project.urls]

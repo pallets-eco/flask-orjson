@@ -12,7 +12,7 @@ from flask.json.provider import JSONProvider
 from flask.wrappers import Response
 from werkzeug.http import http_date
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 
 def _default(o: t.Any) -> t.Any:
