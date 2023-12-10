@@ -15,7 +15,7 @@ class NewDataClass:
 
 def create_app():
     app = Flask(__name__)
-    orjson.init_app(app)  # Sets ORJSON as the default JSON encoder
+    orjson.init_app(app, sort_keys=False)  # Sets ORJSON as the default JSON encoder
 
     @app.route("/")
     def index():

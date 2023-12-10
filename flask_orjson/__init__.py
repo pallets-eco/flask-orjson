@@ -9,10 +9,11 @@ from datetime import date
 import orjson
 from flask import Flask
 from flask.json.provider import JSONProvider
+from flask.sansio.app import App
 from flask.wrappers import Response
 from werkzeug.http import http_date
 
-__version__ = "1.0.3"
+__version__ = "1.1"
 
 
 def _default(o: t.Any) -> t.Any:
@@ -50,6 +51,18 @@ class ORJSONProvider(JSONProvider):
     compact: bool | None = None
     mimetype = "application/json"
 
+    def __init__(
+        self,
+        app: App,
+        sort_keys: bool = True,
+        compact: bool = None,
+        default: callable = None,
+    ) -> None:
+        super().__init__(app)
+        self.sort_keys = sort_keys
+        self.compact = compact
+        self.default = default
+
     def dumps(self, obj: t.Any, **kwargs: t.Any) -> str:
         kwargs.setdefault("default", self.default)
 
@@ -68,7 +81,9 @@ class ORJSONProvider(JSONProvider):
         if "compact" in kwargs:
             return orjson.dumps(obj, default=self.default).decode("utf-8")
 
-        return orjson.dumps(obj, **kwargs).decode("utf-8")
+        return orjson.dumps(
+            obj, option=orjson.OPT_INDENT_2, default=self.default
+        ).decode("utf-8")
 
     def loads(self, s: str | bytes, **kwargs: t.Any) -> t.Any:
         return orjson.loads(s)
@@ -87,13 +102,27 @@ class ORJSONProvider(JSONProvider):
 
 
 class ORJSON:
-    def __init__(self, app: t.Optional[Flask] = None) -> None:
+    def __init__(
+        self,
+        app: t.Optional[Flask] = None,
+        sort_keys: bool = True,
+        compact: bool = None,
+        default: callable = None,
+    ) -> None:
         if app is not None:
-            self.init_app(app)
+            self.init_app(app, sort_keys, compact, default)
 
-    def init_app(self, app: Flask) -> None:
+    def init_app(
+        self,
+        app: Flask,
+        sort_keys: bool = True,
+        compact: bool = None,
+        default: callable = None,
+    ) -> None:
         if "orjson" in app.extensions:
             raise RuntimeError("Flask app already initialized for orjson")
 
         app.extensions["orjson"] = self
-        app.json = ORJSONProvider(app)
+        jsonp = ORJSONProvider(app, sort_keys, compact, default)
+
+        app.json = jsonp
