@@ -13,7 +13,7 @@ from flask.sansio.app import App
 from flask.wrappers import Response
 from werkzeug.http import http_date
 
-__version__ = "1.1"
+__version__ = "1.2"
 
 
 def _default(o: t.Any) -> t.Any:
@@ -48,7 +48,7 @@ class ORJSONProvider(JSONProvider):
 
     default: t.Callable[[t.Any], t.Any] = staticmethod(_default)  # type: ignore[assignment]
     sort_keys = True
-    compact: bool | None = None
+    compact: t.Optional[bool] = None
     mimetype = "application/json"
 
     def __init__(
@@ -85,7 +85,7 @@ class ORJSONProvider(JSONProvider):
             obj, option=orjson.OPT_INDENT_2, default=self.default
         ).decode("utf-8")
 
-    def loads(self, s: str | bytes, **kwargs: t.Any) -> t.Any:
+    def loads(self, s: t.Union[str, bytes], **kwargs: t.Any) -> t.Any:
         return orjson.loads(s)
 
     def response(self, *args: t.Any, **kwargs: t.Any) -> Response:
