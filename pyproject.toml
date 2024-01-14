@@ -1,20 +1,72 @@
-[build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
-
 [project]
 name = "flask-orjson"
-authors = [{ name = "David Carmichael", email = "david@uilix.com" }]
+version = "2.0.0"
+description = "A Flask JSON provider using the fast orjson library."
 readme = "README.md"
-license = { file = "LICENSE" }
-requires-python = ">=3.8"
-dynamic = ["version", "description"]
-dependencies = [
-    "orjson >= 3.9.0",
-    "flask >= 3.0.0",
+license = { file = "LICENSE.txt" }
+maintainers = [{ name = "Pallets Community Ecosystem", email = "contact@palletsprojects.com" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Flask",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Typing :: Typed"
 ]
-[project.urls]
-Home = "https://github.com/CheeseCake87/flask-orjson"
+requires-python = ">=3.8"
+dependencies = [
+    "flask",
+    "orjson",
+]
 
-[tool.flit.sdist]
-exclude = ["app/", ".gitignore", "requirements_build.txt"]
+[project.urls]
+Documentation = "https://flask-orjson.readthedocs.io/"
+Changes = "https://flask-orjson.readthedocs.io/changes/"
+Source = "https://github.com/davidism/flask-orjson/"
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "error",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["flask_orjson", "tests"]
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.mypy]
+files = ["src/flask_orjson", "tests"]
+show_error_codes = true
+pretty = true
+strict = true
+
+[tool.pyright]
+include = ["src/flask_orjson", "tests"]
+
+[tool.ruff]
+src = ["src"]
+fix = true
+unsafe-fixes = true
+show-fixes = true
+show-source = true
+
+[tool.ruff.lint]
+select = [
+    "B",  # flake8-bugbear
+    "E",  # pycodestyle error
+    "F",  # pyflakes
+    "I",  # isort
+    "UP",  # pyupgrade
+    "W",  # pycodestyle warning
+]
+ignore-init-module-imports = true
+
+[tool.ruff.lint.isort]
+force-single-line = true
+order-by-type = false

@@ -1,22 +1,19 @@
+from __future__ import annotations
+
 import pytest
+from flask import Flask
+from flask.testing import FlaskClient
 
-from . import create_app
-
-
-@pytest.fixture(scope='session')
-def app():
-    app = create_app()
-    app.config.update({
-        "TESTING": True,
-    })
-    yield app
+from flask_orjson import OrjsonProvider
 
 
-@pytest.fixture(scope='session')
-def client(app):
+@pytest.fixture
+def app() -> Flask:
+    app = Flask(__name__)
+    app.json = OrjsonProvider(app)
+    return app
+
+
+@pytest.fixture
+def client(app: Flask) -> FlaskClient:
     return app.test_client()
-
-
-@pytest.fixture()
-def runner(app):
-    return app.test_cli_runner()
