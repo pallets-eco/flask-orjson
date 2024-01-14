@@ -1,6 +1,6 @@
 ## Version 2.0.0
 
-Unreleased
+Released 2024-01-14
 
 - Simplify how the library is used and configured.
 - The `ORJSON` extension class is removed. Use `app.json = OrjsonProvider(app)`.
