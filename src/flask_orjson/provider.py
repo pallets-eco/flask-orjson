@@ -18,7 +18,7 @@ def _default(o: t.Any) -> t.Any:
 
 
 class OrjsonProvider(JSONProvider):
-    """Flask :class:`~flask.json.provider.JSONProvider` that uses the
+    """A :class:`~flask.json.provider.JSONProvider` that uses the fast
     `orjson <https://github.com/ijl/orjson>`__ library.
     """
 

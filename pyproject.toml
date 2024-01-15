@@ -1,7 +1,7 @@
 [project]
 name = "flask-orjson"
 version = "2.0.0"
-description = "A Flask JSON provider using the fast orjson library."
+description = "A Flask/Quart JSON provider using the fast orjson library."
 readme = "README.md"
 license = { file = "LICENSE.txt" }
 maintainers = [{ name = "Pallets Community Ecosystem", email = "contact@palletsprojects.com" }]

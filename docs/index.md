@@ -1,10 +1,11 @@
 # flask-orjson
 
-A [Flask][] {class}`~.flask.json.provider.JSONProvider` using the fast
-[orjson][] library. Using this provider will significantly speed up
-reading JSON data in requests and generating JSON responses.
+A [Flask][]/[Quart][] {class}`~.flask.json.provider.JSONProvider` using the fast
+[orjson][] library. Using this provider will significantly speed up reading JSON
+data in requests and generating JSON responses.
 
 [Flask]: https://flask.palletsprojects.com
+[Quart]: https://quart.palletsprojects.com
 [orjson]: https://github.com/ijl/orjson
 
 ## Usage
