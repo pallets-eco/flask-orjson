@@ -10,6 +10,7 @@ from flask_orjson import OrjsonProvider
 @pytest.fixture
 def app() -> Flask:
     app = Flask(__name__)
+    app.config["SECRET_KEY"] = "secret_key"
     app.json = OrjsonProvider(app)
     return app
 

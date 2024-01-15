@@ -1,3 +1,11 @@
+## Version 2.0.1
+
+Unreleased
+
+- Fallback to the builtin `json`-library when an `object_hook` is passed to `.loads`
+  since `orjson` cannot handle this. This ensures full compatibility and correct
+  serialization with `get_flashed_messages(with_categories=True)`.
+
 ## Version 2.0.0
 
 Released 2024-01-14

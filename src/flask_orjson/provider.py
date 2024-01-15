@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import typing as t
 from decimal import Decimal
 
@@ -68,9 +69,13 @@ class OrjsonProvider(JSONProvider):
         return orjson.dumps(obj, option=option, default=default).decode()
 
     def loads(self, s: str | bytes, **kwargs: t.Any) -> t.Any:
-        """Deserialize data as JSON.
+        """Deserialize data as JSON. If an ``object_hook``-kwarg is passed,
+        which ``orjson`` cannot handle, fallback to the builtin ``json``.
 
         :param s: Text or UTF-8 bytes.
         :param kwargs: All keyword arguments are silently ignored.
         """
+        if "object_hook" in kwargs:
+            return json.loads(s, **kwargs)
+
         return orjson.loads(s)

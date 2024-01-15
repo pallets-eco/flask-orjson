@@ -8,7 +8,10 @@ from decimal import Decimal
 
 import orjson
 import pytest
+from flask import flash
 from flask import Flask
+from flask import get_flashed_messages
+from flask import redirect
 from flask import request
 from flask.testing import FlaskClient
 
@@ -84,3 +87,19 @@ def test_method_default(app: Flask) -> None:
 
     rv = app.json.dumps({"a": Decimal(1)}, default=default)
     assert rv == """{"a":"default"}"""
+
+
+def test_request_post_with_session_flash_msg_with_categories(
+    app: Flask,
+    client: FlaskClient,
+) -> None:
+    @app.route("/", methods=["GET", "POST"])
+    def test() -> t.Any:
+        if request.method == "POST":
+            flash("flash")
+            return redirect("/")
+
+        return get_flashed_messages(with_categories=True)
+
+    rv = client.post("/", follow_redirects=True)
+    assert rv.json == [["message", "flash"]]
