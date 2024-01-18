@@ -21,7 +21,7 @@ dependencies = [
 [project.urls]
 Documentation = "https://flask-orjson.readthedocs.io/"
 Changes = "https://flask-orjson.readthedocs.io/changes/"
-Source = "https://github.com/davidism/flask-orjson/"
+Source = "https://github.com/pallets-eco/flask-orjson/"
 
 [build-system]
 requires = ["flit_core<4"]
