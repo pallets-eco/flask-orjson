@@ -47,7 +47,7 @@ filelock==3.13.1
     # via
     #   tox
     #   virtualenv
-furo==2023.9.10
+furo==2024.1.29
     # via -r docs.txt
 identify==2.5.33
     # via pre-commit
@@ -129,7 +129,7 @@ pyproject-api==1.6.1
     # via tox
 pyproject-hooks==1.0.0
     # via build
-pytest==7.4.4
+pytest==8.0.0
     # via
     #   -r tests.txt
     #   -r typing.txt
@@ -142,7 +142,7 @@ requests==2.31.0
     # via
     #   -r docs.txt
     #   sphinx
-ruff==0.1.13
+ruff==0.1.15
     # via -r dev.in
 snowballstemmer==2.2.0
     # via
@@ -186,7 +186,7 @@ sphinxcontrib-serializinghtml==1.1.10
     # via
     #   -r docs.txt
     #   sphinx
-tox==4.12.0
+tox==4.12.1
     # via -r dev.in
 typing-extensions==4.9.0
     # via
