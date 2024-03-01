@@ -33,7 +33,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements/*.txt
       - name: cache mypy
-        uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c
+        uses: actions/cache@ab5e6d0c87105b4c9c2047343972218f562e4319
         with:
           path: ./.mypy_cache
           key: mypy|${{ hashFiles('pyproject.toml') }}
