@@ -140,7 +140,7 @@ pyyaml==6.0.1
     #   -r docs.txt
     #   myst-parser
     #   pre-commit
-requests==2.31.0
+requests==2.32.0
     # via
     #   -r docs.txt
     #   sphinx
