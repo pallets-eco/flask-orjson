@@ -86,7 +86,7 @@ mdurl==0.1.2
     # via
     #   -r docs.txt
     #   markdown-it-py
-mypy==1.10.0
+mypy==1.10.1
     # via -r typing.txt
 mypy-extensions==1.0.0
     # via
@@ -131,7 +131,7 @@ pyproject-hooks==1.0.0
     # via
     #   build
     #   pip-tools
-pytest==8.2.1
+pytest==8.2.2
     # via
     #   -r tests.txt
     #   -r typing.txt
@@ -144,7 +144,7 @@ requests==2.32.0
     # via
     #   -r docs.txt
     #   sphinx
-ruff==0.4.7
+ruff==0.5.0
     # via -r dev.in
 snowballstemmer==2.2.0
     # via
@@ -188,7 +188,7 @@ sphinxcontrib-serializinghtml==1.1.10
     # via
     #   -r docs.txt
     #   sphinx
-tox==4.15.0
+tox==4.15.1
     # via -r dev.in
 typing-extensions==4.9.0
     # via
