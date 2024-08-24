@@ -14,8 +14,8 @@ jobs:
       matrix:
         python: ['3.12', '3.11', '3.10', '3.9', '3.8']
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
-      - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f # v5.1.1
         with:
           python-version: ${{ matrix.python }}
           allow-prereleases: true
@@ -26,14 +26,14 @@ jobs:
   typing:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
-      - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f # v5.1.1
         with:
           python-version: '3.x'
           cache: pip
           cache-dependency-path: requirements/*.txt
       - name: cache mypy
-        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
           path: ./.mypy_cache
           key: mypy|${{ hashFiles('pyproject.toml') }}
