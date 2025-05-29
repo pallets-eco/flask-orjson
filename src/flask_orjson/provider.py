@@ -31,7 +31,7 @@ class OrjsonProvider(JSONProvider):
     for :mod:`datetime` objects that do not have a timezone.
     """
 
-    default: t.Callable[[t.Any], t.Any] | None = staticmethod(_default)
+    default: t.Callable[[t.Any], t.Any] | None = staticmethod(_default)  # type: ignore[assignment]
     """Function to call to convert data in an unsupported type to a valid JSON
     type.
 
